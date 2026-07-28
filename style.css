@@ -1,0 +1,92 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#003b7a,#0b5fb3,#1d8fe1);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.overlay{
+    width:100%;
+    padding:20px;
+}
+
+.ticket{
+    max-width:850px;
+    margin:auto;
+    background:white;
+    color:#002b5c;
+    border-radius:25px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    border:6px solid gold;
+}
+
+h1{
+    color:#003b7a;
+    font-size:2.5em;
+    margin-bottom:10px;
+}
+
+h2{
+    color:#666;
+    margin-bottom:30px;
+}
+
+#countdown{
+    font-size:2em;
+    font-weight:bold;
+    color:#d40000;
+    margin:25px 0;
+}
+
+.train-zone{
+    margin:35px 0;
+}
+
+.track{
+    height:10px;
+    background:#bbb;
+    border-radius:20px;
+    margin:20px 0;
+    position:relative;
+}
+
+#train{
+    position:absolute;
+    left:0;
+    top:-18px;
+    font-size:40px;
+}
+
+.station{
+    font-weight:bold;
+}
+
+.mission{
+    margin-top:40px;
+    background:#eef6ff;
+    padding:20px;
+    border-radius:15px;
+}
+
+.mission h3{
+    color:#003b7a;
+    margin-bottom:10px;
+}
+
+#arrivalMessage{
+    margin-top:30px;
+    font-size:1.4em;
+    font-weight:bold;
+    color:#008000;
+}
