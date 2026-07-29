@@ -1,21 +1,22 @@
-// ===============================
-// DATE DU DÉPART
-// ===============================
+// =====================
+// DATES
+// =====================
 
 const departureDate = new Date("2026-11-25T07:35:00");
 
-// Date de début de la progression (aujourd'hui)
+// Date de début de la progression du train
 const startDate = new Date("2026-07-29T00:00:00");
 
-// ===============================
+// =====================
 // MISE À JOUR
-// ===============================
+// =====================
 
 function updatePage() {
 
     const now = new Date();
 
-    // ----- Compte à rebours -----
+    // ===== Compte à rebours =====
+
     const diff = departureDate - now;
 
     const countdown = document.getElementById("countdown");
@@ -28,7 +29,7 @@ function updatePage() {
         const secondes = Math.floor((diff % (1000 * 60)) / 1000);
 
         countdown.innerHTML =
-            ${jours} jours • ${heures} h • ${minutes} min • ${secondes} s;
+            `${jours} jours • ${heures} h • ${minutes} min • ${secondes} s`;
 
     } else {
 
@@ -36,7 +37,7 @@ function updatePage() {
 
     }
 
-    // ----- Position du train -----
+    // ===== Position du train =====
 
     const total = departureDate - startDate;
     const elapsed = now - startDate;
@@ -59,20 +60,19 @@ function updatePage() {
 // Première mise à jour
 updatePage();
 
-// Mise à jour du compte à rebours
+// Mise à jour chaque seconde
 setInterval(updatePage, 1000);
 
-
-// ===============================
-// SURPRISE
-// ===============================
+// =====================
+// CADEAU
+// =====================
 
 const surpriseBtn = document.getElementById("surpriseBtn");
 const surprise = document.getElementById("surprise");
 
 if (surpriseBtn && surprise) {
 
-    surpriseBtn.addEventListener("click", () => {
+    surpriseBtn.addEventListener("click", function () {
 
         surpriseBtn.style.display = "none";
         surprise.style.display = "block";
