@@ -12,16 +12,20 @@ function updateCountdown() {
         countdown.innerHTML = "🚄 C'est le grand départ !";
         train.style.left = "95%";
         arrival.innerHTML =
-            "🎉 Ding Dong... Bienvenue en gare de Londres St Pancras ! 🇬🇧";
+            "🎉 Ding Dong... Bienvenue à Londres St Pancras ! 🇬🇧";
         return;
     }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
 
     countdown.innerHTML =
-        days + " jours " + hours + " h " + minutes + " min";
+        days + " jours • " +
+        hours + " h • " +
+        minutes + " min • " +
+        seconds + " sec";
 
     const totalDays = 365;
     const progress = Math.min((365 - days) / totalDays, 1);
@@ -30,11 +34,12 @@ function updateCountdown() {
 }
 
 updateCountdown();
-setInterval(updateCountdown, 60000);
+setInterval(updateCountdown, 1000);
 
-// ===========================
-// Bouton Surprise
-// ===========================
+
+// ==========================
+// Surprise
+// ==========================
 
 const surpriseBtn = document.getElementById("surpriseBtn");
 const surprise = document.getElementById("surprise");
@@ -42,11 +47,24 @@ const surprise = document.getElementById("surprise");
 surpriseBtn.addEventListener("click", function () {
 
     if (surprise.style.display === "none") {
+
         surprise.style.display = "block";
+
+        surprise.animate([
+            {opacity:0, transform:"translateY(30px)"},
+            {opacity:1, transform:"translateY(0)"}
+        ],{
+            duration:700,
+            easing:"ease-out"
+        });
+
         surpriseBtn.innerHTML = "💌 Surprise ouverte";
+
     } else {
+
         surprise.style.display = "none";
         surpriseBtn.innerHTML = "🎁 Ouvrir une surprise";
+
     }
 
 });
