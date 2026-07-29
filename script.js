@@ -31,3 +31,22 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 60000);
+
+// ===========================
+// Bouton Surprise
+// ===========================
+
+const surpriseBtn = document.getElementById("surpriseBtn");
+const surprise = document.getElementById("surprise");
+
+surpriseBtn.addEventListener("click", function () {
+
+    if (surprise.style.display === "none") {
+        surprise.style.display = "block";
+        surpriseBtn.innerHTML = "💌 Surprise ouverte";
+    } else {
+        surprise.style.display = "none";
+        surpriseBtn.innerHTML = "🎁 Ouvrir une surprise";
+    }
+
+});
