@@ -1,87 +1,82 @@
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(#87CEEB,#EAF8FF);
+    background:linear-gradient(#8fd3ff,#eaf8ff);
+    color:#222;
 }
 
-.overlay{
-    display:flex;
-    justify-content:center;
-    padding:20px;
-}
-
-.ticket{
-    max-width:950px;
-    width:100%;
-    background:#fffaf2;
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    background:white;
     border-radius:20px;
     padding:30px;
-    box-shadow:0 8px 20px rgba(0,0,0,.2);
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
-.header{
+header{
     text-align:center;
+    margin-bottom:30px;
+}
+
+header h1{
     color:#0b4f8a;
+    font-size:42px;
 }
 
-h1{
-    text-align:center;
-    margin-bottom:10px;
-}
-
-.subtitle{
-    text-align:center;
-    color:#666;
+header h2{
+    margin-top:10px;
 }
 
 #countdown{
     text-align:center;
-    font-size:30px;
+    font-size:32px;
     font-weight:bold;
-    color:#d64b73;
-    margin:25px 0;
+    color:#d81b60;
+    margin:30px 0;
 }
 
-/* ===== Voyage ===== */
+/* Voyage */
 
 .voyage{
-    margin:40px 0;
+    margin-top:30px;
 }
 
-.depart{
+.gare{
     text-align:left;
 }
 
-.depart img{
+.gare img{
     width:180px;
 }
 
-.depart p{
-    margin-top:5px;
+.gare p{
+    font-size:20px;
     font-weight:bold;
 }
 
-.track{
+.rails{
     position:relative;
-    margin-top:20px;
-    height:140px;
-    border-top:6px solid #777;
+    height:150px;
+    margin-top:30px;
+    border-top:8px solid #666;
 }
-
-/* Train */
 
 #train{
     position:absolute;
     left:0;
-    top:-22px;
-    transition:left .8s ease;
+    top:-30px;
+    transition:left 1s ease;
 }
 
 #train img{
-    width:120px;
+    width:150px;
 }
-
-/* Destination */
 
 .destination{
     position:absolute;
@@ -101,60 +96,67 @@ h1{
 /* Mission */
 
 .mission{
-    margin-top:40px;
+    margin-top:60px;
+    padding:20px;
     border-left:6px solid crimson;
-    padding-left:20px;
+    background:#fff7f7;
 }
 
-.mission h3{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.mission-icon{
+.bus{
     width:45px;
+    vertical-align:middle;
 }
 
 /* Cadeau */
 
-.envelope-zone{
+.cadeau{
     text-align:center;
-    margin-top:40px;
+    margin-top:50px;
 }
 
 #surpriseBtn{
-    border:none;
     background:none;
+    border:none;
     cursor:pointer;
 }
 
 #surpriseBtn img{
-    width:120px;
-    transition:transform .3s;
+    width:130px;
+    transition:.3s;
 }
 
 #surpriseBtn img:hover{
-    transform:scale(1.08);
+    transform:scale(1.1);
 }
 
 #surprise{
-    margin-top:20px;
+    display:none;
+    margin-top:25px;
 }
 
 #surprise img{
     width:220px;
+    max-width:90%;
+}
+
+#surprise h2{
+    margin:20px 0 10px;
+    color:#d81b60;
 }
 
 /* Mobile */
 
 @media(max-width:768px){
 
-.ticket{
-    padding:20px;
+header h1{
+    font-size:30px;
 }
 
-.depart img{
+#countdown{
+    font-size:22px;
+}
+
+.gare img{
     width:120px;
 }
 
@@ -163,14 +165,10 @@ h1{
 }
 
 #train img{
-    width:90px;
+    width:95px;
 }
 
-#countdown{
-    font-size:22px;
-}
-
-.track{
+.rails{
     height:110px;
 }
 
