@@ -1,120 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission Londres 2026</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Londres 2026</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <div class="overlay">
+<div class="ticket">
+<div class="header">
+<h2>🚄 EUROSTAR</h2>
+<p>25 au 28 novembre 2026</p>
+</div>
 
-    <div class="ticket">
+<h1>🇬🇧 Bienvenue Andy 🇬🇧</h1>
+<h2>Ton aventure à Londres commence bientôt...</h2>
 
-        <div class="header">
-            <h2>🚄 EUROSTAR</h2>
-            <p>25 au 28 novembre 2026</p>
-        </div>
+<div id="countdown"></div>
 
-        <h1>🇬🇧 Bienvenue Andy 🇬🇧</h1>
+<div class="train-zone">
 
-        <h2>Ton aventure à Londres commence bientôt...</h2>
+<div class="departure-board">
+<div class="board-title">🚄 DÉPARTS</div>
+<div class="board-row">
+<span class="time">07:35</span>
+<span class="destination">LONDON ST PANCRAS</span>
+<span class="status">À L'HEURE</span>
+</div>
+<div class="board-info">EUROSTAR • Départ : Lille Europe</div>
+</div>
 
-        <div id="countdown"></div>
-
-        <div class="train-zone">
-
-            <div class="departure-board">
-
-                <div class="board-title">
-                    🚄 DÉPARTS
-                </div>
-
-                <div class="board-row">
-                    <span class="time">07:35</span>
-                    <span class="destination">LONDON ST PANCRAS</span>
-                    <span class="status">À L'HEURE</span>
-                </div>
-
-                <div class="board-info">
-                    EUROSTAR • Départ : Lille Europe
-                </div>
-
-            </div>
-
-            <div class="track">
-
-                <div id="train">
-                    <img src="images/train.png" alt="Eurostar">
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="mission">
-
-            <h3>
-                <img src="images/bus.png" class="mission-icon" alt="Bus">
-                Mission Bus Rouge
-            </h3>
-
-            <p>
-                Trouve un bus rouge à impériale et prends une photo devant !
-            </p>
-
-        </div>
-
-        <div id="arrivalMessage"></div>
-
-        <div class="envelope-zone">
-
-            <button id="surpriseBtn">
-                <img src="images/cadeau.png" alt="Ouvrir la surprise">
-            </button>
-
-            <div id="surprise" style="display:none;">
-
-                <img src="images/surprise.png" alt="Surprise" style="width:220px;">
-
-                <h2>🎉 Surprise !</h2>
-
-                <p>
-                    Cher Andy,
-                    <br><br>
-
-                    Tu pars avec nous à Londres !
-
-                    <br><br>
-
-                    🚄 Eurostar<br>
-                    🏰 Big Ben<br>
-                    🚌 Les célèbres bus rouges<br>
-                    🌉 Tower Bridge<br>
-                    🎡 London Eye
-
-                    <br><br>
-
-                    ❤️ Prépare-toi pour une aventure inoubliable !
-                </p>
-
-            </div>
-
-        </div>
-
-        <footer>
-            🚄 Lille Europe ➜ London St Pancras<br>
-            📅 25 au 28 novembre 2026
-        </footer>
-
-    </div>
+<div class="track">
+<div id="train">
+<img src="images/train.png" alt="Eurostar">
+</div>
+</div>
 
 </div>
 
-<script src="script.js"></script>
+<div class="mission">
+<h3><img src="images/bus.png" class="mission-icon" alt=""> Mission Bus Rouge</h3>
+<p>Trouve un bus rouge à impériale et prends une photo devant !</p>
+</div>
 
+<div id="arrivalMessage"></div>
+
+<div class="envelope-zone">
+<button id="surpriseBtn">
+<img src="images/cadeau.png" alt="Ouvrir la surprise">
+</button>
+
+<div id="surprise" style="display:none;">
+<img src="images/surprise.png" alt="Surprise" style="width:220px;">
+<h2>🎉 Surprise !</h2>
+<p>
+Cher Andy,<br><br>
+Tu pars avec nous à Londres !<br><br>
+🚄 Eurostar<br>
+🏰 Big Ben<br>
+🚌 Les célèbres bus rouges<br>
+🌉 Tower Bridge<br>
+🎡 London Eye<br><br>
+❤️ Prépare-toi pour une aventure inoubliable !
+</p>
+</div>
+</div>
+
+<footer>
+🚄 Lille Europe ➜ London St Pancras<br>
+📅 25 au 28 novembre 2026
+</footer>
+
+</div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
