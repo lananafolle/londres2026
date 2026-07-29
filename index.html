@@ -1,62 +1,112 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eurostar - Londres 2026</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eurostar - Mission Londres</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <div class="overlay">
-<div class="ticket">
 
-<div class="header">
-<h3>🚄 EUROSTAR</h3>
-<p>Invitation officielle • Londres 2026</p>
-</div>
+    <div class="ticket">
 
-<h1>🇬🇧 Bienvenue Andy ! 🇬🇧</h1>
-<h2>Ton aventure à Londres commence bientôt...</h2>
+        <div class="header">
+            <h3>🚄 EUROSTAR</h3>
+            <p>Invitation officielle • Londres 2026</p>
+        </div>
 
-<div id="countdown"></div>
+        <h1>🇬🇧 Bienvenue Andy ! 🇬🇧</h1>
 
-<div class="train-zone">
-  <div class="station">
-    <span>🚆 Lille Europe</span>
-    <span>🇬🇧 Londres St Pancras</span>
-  </div>
+        <h2>Ton aventure à Londres commence bientôt...</h2>
 
-  <div class="track">
-    <div id="train">
-      <img src="images/train.png" alt="Eurostar">
+        <div id="countdown"></div>
+
+        <div class="train-zone">
+
+            <div class="station">
+                <span>🚉 Lille Europe</span>
+                <span>🇬🇧 Londres St Pancras</span>
+            </div>
+
+            <div class="track">
+
+                <div id="train">
+                    <img src="images/20.png" alt="Eurostar">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="mission">
+
+            <h3>
+                <img src="images/29.png" class="mission-icon" alt="Bus rouge">
+                Mission Bus Rouge
+            </h3>
+
+            <p>
+                Trouve un bus rouge à impériale et prends une photo devant !
+            </p>
+
+        </div>
+
+        <div id="arrivalMessage"></div>
+
+        <div class="envelope-zone">
+
+            <button id="surpriseBtn">
+                <img src="images/06.png" alt="Enveloppe">
+            </button>
+
+            <div id="surprise">
+
+                <h2>💌 Une lettre pour Andy</h2>
+
+                <p>
+                    Cher Andy,
+                    <br><br>
+
+                    Dans quelques semaines, tu embarqueras à bord de l'Eurostar
+                    pour une aventure exceptionnelle à Londres.
+
+                    <br><br>
+
+                    Une mission spéciale t'attend :
+
+                    <br><br>
+
+                    🏰 Découvrir Big Ben<br>
+                    🚌 Monter dans un bus rouge<br>
+                    🌉 Admirer Tower Bridge<br>
+                    🎡 Voir le London Eye
+
+                    <br><br>
+
+                    ❤️ Nous avons hâte de vivre cette aventure avec toi !
+                </p>
+
+            </div>
+
+        </div>
+
+        <footer>
+
+            🚄 Lille Europe ➜ Londres St Pancras<br>
+            📅 25 au 28 novembre 2026
+
+        </footer>
+
     </div>
-  </div>
-</div>
 
-<div class="mission">
-<h3><img src="images/bus.png" class="mission-icon" alt="Bus rouge"> Mission Bus Rouge</h3>
-<p>Trouve un bus rouge à impériale et prends une photo devant !</p>
-</div>
-
-<div id="arrivalMessage"></div>
-
-<div class="envelope-zone">
-<button id="surpriseBtn">💌 Ouvrir ton invitation</button>
-
-<div id="surprise">
-<h2>🎉 Surprise !</h2>
-<p>Direction Londres du 25 au 28 novembre 2026 en Eurostar !</p>
-</div>
-</div>
-
-<footer>
-🚄 Lille Europe ➜ Londres St Pancras<br>
-📅 25 au 28 novembre 2026
-</footer>
-
-</div>
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
