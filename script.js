@@ -1,52 +1,66 @@
-// ===============================
+// =======================
 // COMPTE À REBOURS
-// ===============================
+// =======================
 
-const targetDate = new Date("2026-11-25T07:35:00").getTime();
+const departureDate = new Date("2026-11-25T07:35:00");
 
-function updateCountdown() {
-    const countdown = document.getElementById("countdown");
-    if (!countdown) return;
+function updatePage() {
 
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+    const now = new Date();
 
-    if (distance <= 0) {
-        countdown.innerHTML = "🚄 C'est le départ !";
-        return;
+    const totalDays = Math.ceil(
+        (departureDate - new Date("2025-11-25")) / (1000*60*60*24)
+    );
+
+    const remainingDays = Math.max(0,
+        Math.ceil((departureDate - now)/(1000*60*60*24))
+    );
+
+    // Compte à rebours
+    const diff = departureDate - now;
+
+    if(diff > 0){
+
+        const d = Math.floor(diff/(1000*60*60*24));
+        const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+        const m = Math.floor((diff%(1000*60*60))/(1000*60));
+        const s = Math.floor((diff%(1000*60))/1000);
+
+        document.getElementById("countdown").innerHTML =
+        ${d} jours • ${h} h • ${m} min • ${s} s;
+
+    }else{
+
+        document.getElementById("countdown").innerHTML =
+        "🚄 C'est le départ !";
+
     }
 
-    const jours = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const heures = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const secondes = Math.floor((distance % (1000 * 60)) / 1000);
+    // Position du train
+    const progress = 1 - (remainingDays / totalDays);
 
-    countdown.innerHTML =
-        `${jours} jours • ${heures} h • ${minutes} min • ${secondes} s`;
+    const train = document.getElementById("train");
+
+    if(train){
+        train.style.left = (progress * 85) + "%";
+    }
+
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+updatePage();
+setInterval(updatePage,1000);
 
 
-// ===============================
+// =======================
 // SURPRISE
-// ===============================
+// =======================
 
-const surpriseBtn = document.getElementById("surpriseBtn");
+const btn = document.getElementById("surpriseBtn");
 const surprise = document.getElementById("surprise");
 
-if (surpriseBtn && surprise) {
+btn.addEventListener("click",function(){
 
-    surpriseBtn.addEventListener("click", function () {
+    btn.style.display="none";
+    surprise.style.display="block";
 
-        surprise.style.display = "block";
-        surpriseBtn.style.display = "none";
-
-        surprise.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    });
-
-}
+});
