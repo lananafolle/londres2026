@@ -98,10 +98,16 @@ h2{
 
 #train{
     position:absolute;
-    top:-18px;
+    top:-28px;
     left:0;
-    font-size:42px;
     transition:left 1s ease;
+}
+
+#train img{
+    width:130px;
+    height:auto;
+    display:block;
+}
 }
 
 .mission{
