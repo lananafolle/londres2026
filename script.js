@@ -1,70 +1,41 @@
-const departureDate = new Date("2026-11-25T08:00:00");
+// ===== Compte à rebours =====
+const targetDate = new Date("2026-11-25T07:00:00").getTime();
 
 function updateCountdown() {
-    const now = new Date();
-    const diff = departureDate - now;
+    const now = new Date().getTime();
+    const distance = targetDate - now;
 
-    const countdown = document.getElementById("countdown");
-    const train = document.getElementById("train");
-    const arrival = document.getElementById("arrivalMessage");
-
-    if (diff <= 0) {
-        countdown.innerHTML = "🚄 C'est le grand départ !";
-        train.style.left = "95%";
-        arrival.innerHTML =
-            "🎉 Ding Dong... Bienvenue à Londres St Pancras ! 🇬🇧";
+    if (distance <= 0) {
+        document.getElementById("countdown").innerHTML = "🚄 C'est le départ !";
         return;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdown.innerHTML =
-        days + " jours • " +
-        hours + " h • " +
-        minutes + " min • " +
-        seconds + " sec";
-
-    const totalDays = 365;
-    const progress = Math.min((365 - days) / totalDays, 1);
-
-    train.style.left = (progress * 95) + "%";
+    document.getElementById("countdown").innerHTML =
+        ${days} jours • ${hours} h • ${minutes} min • ${seconds} sec;
 }
 
-updateCountdown();
 setInterval(updateCountdown, 1000);
+updateCountdown();
 
 
-// ==========================
-// Surprise
-// ==========================
-
+// ===== Bouton surprise =====
 const surpriseBtn = document.getElementById("surpriseBtn");
 const surprise = document.getElementById("surprise");
 
 surpriseBtn.addEventListener("click", function () {
 
-    if (surprise.style.display === "none") {
+    surprise.style.display = "block";
 
-        surprise.style.display = "block";
+    surpriseBtn.style.display = "none";
 
-        surprise.animate([
-            {opacity:0, transform:"translateY(30px)"},
-            {opacity:1, transform:"translateY(0)"}
-        ],{
-            duration:700,
-            easing:"ease-out"
-        });
-
-        surpriseBtn.innerHTML = "💌 Surprise ouverte";
-
-    } else {
-
-        surprise.style.display = "none";
-        surpriseBtn.innerHTML = "🎁 Ouvrir une surprise";
-
-    }
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
 
 });
