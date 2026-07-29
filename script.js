@@ -1,66 +1,86 @@
-// =======================
-// COMPTE À REBOURS
-// =======================
+// ===============================
+// DATE DU DÉPART
+// ===============================
 
 const departureDate = new Date("2026-11-25T07:35:00");
+
+// Date de début de la progression (aujourd'hui)
+const startDate = new Date("2026-07-29T00:00:00");
+
+// ===============================
+// MISE À JOUR
+// ===============================
 
 function updatePage() {
 
     const now = new Date();
 
-    const totalDays = Math.ceil(
-        (departureDate - new Date("2025-11-25")) / (1000*60*60*24)
-    );
-
-    const remainingDays = Math.max(0,
-        Math.ceil((departureDate - now)/(1000*60*60*24))
-    );
-
-    // Compte à rebours
+    // ----- Compte à rebours -----
     const diff = departureDate - now;
 
-    if(diff > 0){
+    const countdown = document.getElementById("countdown");
 
-        const d = Math.floor(diff/(1000*60*60*24));
-        const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-        const m = Math.floor((diff%(1000*60*60))/(1000*60));
-        const s = Math.floor((diff%(1000*60))/1000);
+    if (diff > 0) {
 
-        document.getElementById("countdown").innerHTML =
-        ${d} jours • ${h} h • ${m} min • ${s} s;
+        const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secondes = Math.floor((diff % (1000 * 60)) / 1000);
 
-    }else{
+        countdown.innerHTML =
+            ${jours} jours • ${heures} h • ${minutes} min • ${secondes} s;
 
-        document.getElementById("countdown").innerHTML =
-        "🚄 C'est le départ !";
+    } else {
+
+        countdown.innerHTML = "🚄 C'est le départ !";
 
     }
 
-    // Position du train
-    const progress = 1 - (remainingDays / totalDays);
+    // ----- Position du train -----
+
+    const total = departureDate - startDate;
+    const elapsed = now - startDate;
+
+    let progress = elapsed / total;
+
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
 
     const train = document.getElementById("train");
 
-    if(train){
-        train.style.left = (progress * 85) + "%";
+    if (train) {
+
+        train.style.left = (progress * 78) + "%";
+
     }
 
 }
 
+// Première mise à jour
 updatePage();
-setInterval(updatePage,1000);
+
+// Mise à jour du compte à rebours
+setInterval(updatePage, 1000);
 
 
-// =======================
+// ===============================
 // SURPRISE
-// =======================
+// ===============================
 
-const btn = document.getElementById("surpriseBtn");
+const surpriseBtn = document.getElementById("surpriseBtn");
 const surprise = document.getElementById("surprise");
 
-btn.addEventListener("click",function(){
+if (surpriseBtn && surprise) {
 
-    btn.style.display="none";
-    surprise.style.display="block";
+    surpriseBtn.addEventListener("click", () => {
 
-});
+        surpriseBtn.style.display = "none";
+        surprise.style.display = "block";
+
+        surprise.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    });
+
+}
