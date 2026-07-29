@@ -1,11 +1,14 @@
-// ===== Compte à rebours =====
-const targetDate = new Date("2026-11-25T07:00:00").getTime();
+// =========================
+// COMPTE À REBOURS
+// =========================
+
+const targetDate = new Date("2026-11-25T07:35:00").getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
-    if (distance <= 0) {
+    if (distance < 0) {
         document.getElementById("countdown").innerHTML = "🚄 C'est le départ !";
         return;
     }
@@ -19,23 +22,25 @@ function updateCountdown() {
         ${days} jours • ${hours} h • ${minutes} min • ${seconds} sec;
 }
 
-setInterval(updateCountdown, 1000);
 updateCountdown();
+setInterval(updateCountdown, 1000);
 
+// =========================
+// SURPRISE
+// =========================
 
-// ===== Bouton surprise =====
 const surpriseBtn = document.getElementById("surpriseBtn");
 const surprise = document.getElementById("surprise");
 
-surpriseBtn.addEventListener("click", function () {
+if (surpriseBtn && surprise) {
+    surpriseBtn.addEventListener("click", function () {
 
-    surprise.style.display = "block";
+        surprise.style.display = "block";
+        surpriseBtn.style.display = "none";
 
-    surpriseBtn.style.display = "none";
+        surprise.scrollIntoView({
+            behavior: "smooth"
+        });
 
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
     });
-
-});
+}
