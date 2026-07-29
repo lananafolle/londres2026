@@ -1,46 +1,230 @@
-// =========================
-// COMPTE À REBOURS
-// =========================
-
-const targetDate = new Date("2026-11-25T07:35:00").getTime();
-
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "🚄 C'est le départ !";
-        return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("countdown").innerHTML =
-        ${days} jours • ${hours} h • ${minutes} min • ${seconds} sec;
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(to bottom,#8fd3ff,#dff5ff);
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+.overlay{
+    display:flex;
+    justify-content:center;
+    padding:30px 15px;
+}
 
-// =========================
-// SURPRISE
-// =========================
+.ticket{
+    background:#fffaf0;
+    max-width:850px;
+    width:100%;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
 
-const surpriseBtn = document.getElementById("surpriseBtn");
-const surprise = document.getElementById("surprise");
+.header{
+    text-align:center;
+    color:#0b4f8a;
+}
 
-if (surpriseBtn && surprise) {
-    surpriseBtn.addEventListener("click", function () {
+h1{
+    text-align:center;
+    color:#173f6d;
+    margin-bottom:5px;
+}
 
-        surprise.style.display = "block";
-        surpriseBtn.style.display = "none";
+h2{
+    text-align:center;
+    color:#555;
+    margin-bottom:20px;
+}
 
-        surprise.scrollIntoView({
-            behavior: "smooth"
-        });
+#countdown{
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    color:#d64b73;
+    margin:20px 0;
+}
 
-    });
+/* Tableau de départ */
+
+.departure-board{
+    background:#111;
+    color:#ffb300;
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:20px;
+    font-family:"Courier New", monospace;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+.board-title{
+    color:white;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.board-row{
+    display:grid;
+    grid-template-columns:80px 1fr 120px;
+    gap:10px;
+    font-weight:bold;
+}
+
+.time{
+    color:white;
+}
+
+.destination{
+    text-align:center;
+}
+
+.status{
+    color:#00ff66;
+    text-align:right;
+    animation:blink 1s infinite;
+}
+
+.board-info{
+    margin-top:15px;
+    text-align:center;
+    color:#ddd;
+    border-top:1px solid #444;
+    padding-top:10px;
+}
+
+@keyframes blink{
+    50%{
+        opacity:.3;
+    }
+}
+
+/* Train */
+
+.track{
+    position:relative;
+    height:90px;
+    border-top:4px solid #999;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+#train{
+    position:absolute;
+    left:-150px;
+    animation:trainMove 12s linear infinite;
+}
+
+#train img{
+    width:140px;
+}
+
+@keyframes trainMove{
+    from{
+        left:-150px;
+    }
+
+    to{
+        left:100%;
+    }
+}
+
+/* Mission */
+
+.mission{
+    border-left:6px solid crimson;
+    padding-left:15px;
+    margin:25px 0;
+}
+
+.mission h3{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#173f6d;
+}
+
+.mission-icon{
+    width:45px;
+}
+
+/* Cadeau */
+
+.envelope-zone{
+    text-align:center;
+    margin-top:35px;
+}
+
+#surpriseBtn{
+    border:none;
+    background:none;
+    cursor:pointer;
+}
+
+#surpriseBtn img{
+    width:120px;
+    transition:.3s;
+}
+
+#surpriseBtn img:hover{
+    transform:scale(1.08);
+}
+
+#surprise{
+    display:none;
+    margin-top:25px;
+    animation:fadeIn .6s;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+#surprise img{
+    width:220px;
+}
+
+#surprise p{
+    line-height:1.7;
+    font-size:18px;
+}
+
+/* Footer */
+
+footer{
+    margin-top:35px;
+    text-align:center;
+    color:#4d6480;
+    font-weight:bold;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+    .board-row{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    #countdown{
+        font-size:22px;
+    }
+
+    #train img{
+        width:100px;
+    }
+
+    #surprise img{
+        width:170px;
+    }
+
 }
