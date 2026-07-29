@@ -12,7 +12,7 @@ function updateCountdown() {
     const distance = targetDate - now;
 
     if (distance <= 0) {
-        countdown.innerHTML = "🚄 C'est le grand départ !";
+        countdown.innerHTML = "🚄 C'est le départ !";
         return;
     }
 
@@ -22,7 +22,7 @@ function updateCountdown() {
     const secondes = Math.floor((distance % (1000 * 60)) / 1000);
 
     countdown.innerHTML =
-        ${jours} jours • ${heures} h • ${minutes} min • ${secondes} s;
+        `${jours} jours • ${heures} h • ${minutes} min • ${secondes} s`;
 }
 
 updateCountdown();
@@ -30,7 +30,7 @@ setInterval(updateCountdown, 1000);
 
 
 // ===============================
-// BOUTON SURPRISE
+// SURPRISE
 // ===============================
 
 const surpriseBtn = document.getElementById("surpriseBtn");
@@ -38,10 +38,9 @@ const surprise = document.getElementById("surprise");
 
 if (surpriseBtn && surprise) {
 
-    surpriseBtn.addEventListener("click", () => {
+    surpriseBtn.addEventListener("click", function () {
 
         surprise.style.display = "block";
-
         surpriseBtn.style.display = "none";
 
         surprise.scrollIntoView({
@@ -50,15 +49,4 @@ if (surpriseBtn && surprise) {
 
     });
 
-}
-
-
-// ===============================
-// MESSAGE D'ARRIVÉE
-// ===============================
-
-const arrival = document.getElementById("arrivalMessage");
-
-if (arrival) {
-    arrival.innerHTML = "🇬🇧 Direction Londres !";
 }
