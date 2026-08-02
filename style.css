@@ -319,6 +319,18 @@ header p{
     z-index:50;
 }
 
+   .rails::before{
+    z-index:1;
+}
+
+.gare,
+.destination{
+    z-index:20;
+}
+
+#train{
+    z-index:15;
+}
     #train{
     top:58px;
     left:5%;
