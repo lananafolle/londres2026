@@ -379,3 +379,42 @@ header p{
         width:35px;
     }
 }
+/* ==========================
+   FUMÉE DU TRAIN
+========================== */
+
+#smoke{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:120px;
+    height:40px;
+    pointer-events:none;
+    z-index:9;
+}
+
+#smoke::before,
+#smoke::after{
+    content:"";
+    position:absolute;
+    width:18px;
+    height:18px;
+    background:rgba(255,255,255,0.8);
+    border-radius:50%;
+    animation:smoke 2s infinite;
+}
+
+#smoke::after{
+    animation-delay:1s;
+}
+
+@keyframes smoke{
+    0%{
+        transform:translate(0,0) scale(0.4);
+        opacity:0.9;
+    }
+    100%{
+        transform:translate(-40px,-25px) scale(1.6);
+        opacity:0;
+    }
+}
