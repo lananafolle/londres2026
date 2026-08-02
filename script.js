@@ -113,6 +113,18 @@ if (surpriseBtn && surprise && enveloppe && messageSurprise) {
         setTimeout(function () {
 
             enveloppe.style.display = "none";
+            const sparkles = document.getElementById("sparkles");
+
+for(let i=0;i<20;i++){
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.style.setProperty("--x",(Math.random()*300-150)+"px");
+    s.style.setProperty("--y",(Math.random()*-250)+"px");
+    sparkles.appendChild(s);
+
+    setTimeout(()=>s.remove(),1000);
+}
+
             messageSurprise.style.display = "block";
             if (magic) {
     magic.play();
