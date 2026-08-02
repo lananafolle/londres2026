@@ -13,7 +13,9 @@ function updatePage() {
 
     const now = new Date();
 
-    // ===== COMPTE À REBOURS =====
+    // =====================
+    // COMPTE À REBOURS
+    // =====================
 
     const diff = departureDate - now;
     const countdown = document.getElementById("countdown");
@@ -57,7 +59,9 @@ function updatePage() {
 
     }
 
-    // ===== TRAIN =====
+    // =====================
+    // TRAIN
+    // =====================
 
     const total = departureDate - startDate;
     const elapsed = now - startDate;
@@ -71,7 +75,9 @@ function updatePage() {
 
     if (train) {
 
-        const position = 5 + (progress * 78);
+        // Départ juste après la gare
+        const position = 30 + (progress * 53);
+
         train.style.left = position + "%";
 
     }
@@ -81,7 +87,7 @@ function updatePage() {
 // Première mise à jour
 updatePage();
 
-// Mise à jour toutes les secondes
+// Mise à jour chaque seconde
 setInterval(updatePage, 1000);
 
 // =====================
