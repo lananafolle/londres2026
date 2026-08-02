@@ -6,19 +6,21 @@
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(#8fd3ff,#eaf8ff);
+    background:linear-gradient(#87CEEB,#EAF8FF);
     color:#222;
 }
 
 .container{
-    max-width:900px;
     width:95%;
+    max-width:950px;
     margin:30px auto;
     background:#fff;
     border-radius:20px;
     padding:30px;
     box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
+
+/* HEADER */
 
 header{
     text-align:center;
@@ -27,8 +29,18 @@ header{
 
 header h1{
     font-size:42px;
-    color:#0b4f8a;
+    color:#0B4F8A;
 }
+
+header h2{
+    margin:10px 0;
+}
+
+header p{
+    color:#666;
+}
+
+/* COMPTE A REBOURS */
 
 #countdown{
     display:flex;
@@ -40,47 +52,47 @@ header h1{
 
 .count-box{
     background:#fff;
-    padding:12px 18px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,.15);
-    min-width:80px;
+    padding:15px;
+    min-width:85px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
     text-align:center;
 }
 
 .count-box span{
     display:block;
-    font-size:28px;
+    font-size:30px;
     font-weight:bold;
-    color:#d81b60;
+    color:#D81B60;
 }
 
 .count-box small{
-    color:#555;
+    color:#666;
 }
 
+/* VOYAGE */
+
 .voyage{
-    margin:40px 0;
+    margin:50px 0;
 }
 
 .gare{
-    text-align:center;
-    margin-bottom:20px;
+    text-align:left;
+    margin-bottom:15px;
 }
 
 .gare img{
-    width:220px;
+    width:180px;
 }
 
 .gare p{
-    font-size:22px;
+    margin-top:5px;
     font-weight:bold;
-    margin-top:10px;
 }
 
 .rails{
     position:relative;
-    height:170px;
-    margin-top:20px;
+    height:180px;
 }
 
 .rails::before{
@@ -88,18 +100,18 @@ header h1{
     position:absolute;
     left:0;
     right:0;
-    top:80px;
-    height:18px;
+    top:85px;
+    height:20px;
     background:url("images/rails.jpg") repeat-x center;
     background-size:contain;
 }
 
 #train{
     position:absolute;
-    top:18px;
-    left:35%;
-    transition:left .8s ease;
+    top:20px;
+    left:5%;
     z-index:10;
+    transition:left .8s ease;
 }
 
 #train img{
@@ -110,7 +122,7 @@ header h1{
 .destination{
     position:absolute;
     right:0;
-    top:-5px;
+    top:0;
     text-align:center;
 }
 
@@ -119,91 +131,11 @@ header h1{
 }
 
 .destination p{
-    font-size:22px;
-    font-weight:bold;
     margin-top:8px;
+    font-weight:bold;
 }
+
+/* CADEAU */
 
 .cadeau{
-    text-align:center;
-    margin:60px 0;
-}
-
-#surpriseBtn{
-    background:none;
-    border:none;
-    cursor:pointer;
-}
-
-#surpriseBtn img{
-    width:220px;
-    transition:.3s;
-}
-
-#surpriseBtn img:hover{
-    transform:scale(1.05);
-}
-
-#surprise{
-    display:none;
-    margin-top:25px;
-    animation:fade .6s;
-}
-
-@keyframes fade{
-
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-.mission{
-    margin-top:60px;
-    padding:20px;
-    background:#fff7f7;
-    border-left:6px solid crimson;
-    border-radius:15px;
-}
-
-.bus{
-    width:45px;
-}
-
-@media(max-width:768px){
-
-    header h1{
-        font-size:32px;
-    }
-
-    .gare img{
-        width:180px;
-    }
-
-    .gare p{
-        font-size:18px;
-    }
-
-    .destination img{
-        width:140px;
-    }
-
-    .destination p{
-        font-size:18px;
-    }
-
-    #train img{
-        width:140px;
-    }
-
-    #surpriseBtn img{
-        width:180px;
-    }
-
-}
+    text-align
