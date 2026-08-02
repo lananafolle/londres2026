@@ -13,6 +13,7 @@ function updatePage() {
 
     const now = new Date();
 
+    // Compte à rebours
     const diff = departureDate - now;
     const countdown = document.getElementById("countdown");
 
@@ -56,7 +57,6 @@ function updatePage() {
     }
 
     // Train
-
     const total = departureDate - startDate;
     const elapsed = now - startDate;
 
@@ -78,7 +78,6 @@ function updatePage() {
 }
 
 updatePage();
-
 setInterval(updatePage, 1000);
 
 // =====================
@@ -101,13 +100,11 @@ if (surpriseBtn && surprise && enveloppe && messageSurprise) {
         surpriseBtn.style.display = "none";
 
         surprise.style.display = "block";
-
         enveloppe.style.display = "block";
 
         setTimeout(function () {
 
             enveloppe.style.display = "none";
-
             messageSurprise.style.display = "block";
 
         }, 1500);
