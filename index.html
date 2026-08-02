@@ -1,87 +1,118 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission Londres 2026</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+// =====================
+// DATES
+// =====================
 
-<body>
+const departureDate = new Date("2026-11-25T07:35:00");
+const startDate = new Date("2026-07-29T00:00:00");
 
-<div class="container">
+// =====================
+// MISE À JOUR
+// =====================
 
-    <header>
-        <h1>🇬🇧 Mission Londres 🇬🇧</h1>
-        <h2>25 au 28 novembre 2026</h2>
-        <p>Départ en Eurostar depuis Lille Europe</p>
-    </header>
+function updatePage() {
 
-    <div id="countdown"></div>
+    const now = new Date();
 
-    <section class="voyage">
+    // =====================
+    // COMPTE À REBOURS
+    // =====================
 
-        <div class="gare">
-          <img src="images/gare.jpg" alt="Gare Lille Europe">
-            <p><strong>Lille Europe</strong></p>
-        </div>
+    const diff = departureDate - now;
+    const countdown = document.getElementById("countdown");
 
-        <div class="rails">
+    if (countdown) {
 
-            <div id="train">
-                <img src="images/train.png" alt="Eurostar">
-            </div>
+        if (diff > 0) {
 
-            <div class="destination">
-                <img src="images/bigben.png" alt="Big Ben">
-                <p><strong>Londres</strong></p>
-            </div>
+            const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secondes = Math.floor((diff % (1000 * 60)) / 1000);
 
-        </div>
+            countdown.innerHTML = `
+                <div class="count-box">
+                    <span>${jours}</span>
+                    <small>Jours</small>
+                </div>
 
-    </section>
+                <div class="count-box">
+                    <span>${heures}</span>
+                    <small>Heures</small>
+                </div>
 
-    <section class="mission">
+                <div class="count-box">
+                    <span>${minutes}</span>
+                    <small>Minutes</small>
+                </div>
 
-        <h2>
-            <img src="images/bus.png" class="bus">
-            Mission Bus Rouge
-        </h2>
+                <div class="count-box">
+                    <span>${secondes}</span>
+                    <small>Secondes</small>
+                </div>
+            `;
 
-        <p>
-            Pendant le séjour, trouve un bus rouge à impériale et prends une photo devant !
-        </p>
+        } else {
 
-    </section>
+            countdown.innerHTML = `
+                <h2>🚄 C'est le grand départ ! 🇬🇧</h2>
+            `;
 
-    <section class="cadeau">
+        }
 
-        <button id="surpriseBtn">
-            <img src="images/cadeau.png" alt="Cadeau">
-        </button>
+    }
 
-        <div id="surprise">
+    // =====================
+    // TRAIN
+    // =====================
 
-            <img src="images/surprise.png" alt="Surprise">
+    const total = departureDate - startDate;
+    const elapsed = now - startDate;
 
-            <h2>🎉 Surprise !</h2>
+    let progress = elapsed / total;
 
-            <p>
-                Andy, tu pars à Londres avec nous !
-            </p>
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
 
-            <p>
-                🚄 Eurostar<br>
-                📅 25 → 28 novembre 2026
-            </p>
+    const train = document.getElementById("train");
 
-        </div>
+    if (train) {
 
-    </section>
+        // Le train part à 5 % et arrive à 83 %
+        const position = 5 + (progress * 78);
 
-</div>
+        train.style.left = position + "%";
 
-<script src="script.js"></script>
+    }
 
-</body>
-</html>
+}
+
+// Première mise à jour
+updatePage();
+
+// Mise à jour chaque seconde
+setInterval(updatePage, 1000);
+
+// =====================
+// CADEAU
+// =====================
+
+const surpriseBtn = document.getElementById("surpriseBtn");
+const surprise = document.getElementById("surprise");
+
+if (surpriseBtn && surprise) {
+
+    // Cache la surprise au chargement
+    surprise.style.display = "none";
+
+    surpriseBtn.addEventListener("click", function () {
+
+        surpriseBtn.style.display = "none";
+        surprise.style.display = "block";
+
+        surprise.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    });
+
+}
