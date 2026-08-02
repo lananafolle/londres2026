@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission Londres 2026</title>
+    <title>🇬🇧 Mission Londres 2026</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,86 +13,100 @@
 
 <div class="container">
 
-    <header>
+<header>
 
-        <h1>🇬🇧 Mission Londres 🇬🇧</h1>
+    <h1>🇬🇧 Mission Londres 🇬🇧</h1>
 
-        <h2>25 au 28 novembre 2026</h2>
+    <h2>25 au 28 novembre 2026</h2>
 
-        <p>Départ en Eurostar depuis Lille Europe</p>
+    <p>Départ en Eurostar depuis Lille Europe</p>
 
-    </header>
+</header>
 
-    <div id="countdown"></div>
+<!-- Compte à rebours -->
+<div id="countdown"></div>
 
-    <section class="voyage">
+<!-- Voyage -->
+<section class="voyage">
 
-        <div class="rails">
+    <div class="rails">
 
-            <div class="gare">
-                <img src="images/gare.jpg" alt="Lille Europe">
-                <p><strong>Lille Europe</strong></p>
-            </div>
+        <div class="gare">
+            <img src="images/gare.jpg" alt="Lille Europe">
+            <p>Lille Europe</p>
+        </div>
 
-            <div id="train">
-                <img src="images/train.png" alt="Eurostar">
-            </div>
+        <div id="train">
+            <img src="images/train.png" alt="Eurostar">
+        </div>
 
-            <div class="destination">
-                <img src="images/bigben.png" alt="Londres">
-                <p><strong>Londres</strong></p>
-            </div>
+        <div class="destination">
+            <img src="images/bigben.png" alt="Londres">
+            <p>Londres</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Cadeau -->
+<section class="cadeau">
+
+    <button id="surpriseBtn">
+
+        <img id="cadeau"
+             src="images/cadeau.png"
+             alt="Cadeau">
+
+    </button>
+
+    <div id="surprise">
+
+        <img id="enveloppe"
+             src="images/surprise.png"
+             alt="Enveloppe">
+
+        <div id="messageSurprise">
+            <h2>🎉 Surprise !</h2>
+
+            <p>
+                <strong>Andy, tu pars à Londres avec nous !</strong>
+            </p>
+
+            <p>
+                🚄 Eurostar<br>
+                📅 25 → 28 novembre 2026
+            </p>
 
         </div>
 
-    </section>
+    </div>
 
-    <section class="cadeau">
+</section>
 
-        <button id="surpriseBtn">
-            <img id="cadeau" src="images/cadeau.png" alt="Cadeau">
-        </button>
+<!-- Mission -->
 
-        <div id="surprise">
+<section class="mission">
 
-            <img id="enveloppe"
-                 src="images/surprise.png"
-                 alt="Enveloppe">
+    <h2>
 
-            <div id="messageSurprise">
+        <img src="images/bus.png"
+             class="bus"
+             alt="Bus Rouge">
 
-                <h2>🎉 Surprise !</h2>
+        Mission Bus Rouge
 
-                <p>
-                    <strong>Andy, tu pars à Londres avec nous !</strong>
-                </p>
+    </h2>
 
-                <p>
-                    🚄 Eurostar<br>
-                    📅 25 → 28 novembre 2026
-                </p>
+    <p>
 
-            </div>
+        Pendant le séjour, trouve un bus rouge à impériale et prends une photo devant !
 
-        </div>
+    </p>
 
-    </section>
-
-    <section class="mission">
-
-        <h2>
-            <img src="images/bus.png" class="bus" alt="Bus Rouge">
-            Mission Bus Rouge
-        </h2>
-
-        <p>
-            Pendant le séjour, trouve un bus rouge à impériale et prends une photo devant !
-        </p>
-
-    </section>
+</section>
 
 </div>
-
 <script src="script.js"></script>
 
 </body>
