@@ -376,8 +376,8 @@ header p{
 }
 
     .bus{
-        width:150px;
-    }
+    width:150px !important;
+    height:auto;
 }
 /* ==========================
    FUMÉE DU TRAIN
