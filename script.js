@@ -1,191 +1,109 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+// =====================
+// DATES
+// =====================
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:linear-gradient(#8fd3ff,#eaf8ff);
-    color:#222;
-}
+const departureDate = new Date("2026-11-25T07:35:00");
+const startDate = new Date("2026-07-29T00:00:00");
 
-.container{
-    max-width:900px;
-    width:95%;
-    margin:30px auto;
-    background:#fff;
-    border-radius:20px;
-    padding:30px;
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
-}
+// =====================
+// MISE À JOUR
+// =====================
 
-header{
-    text-align:center;
-    margin-bottom:30px;
-}
+function updatePage() {
 
-header h1{
-    font-size:42px;
-    color:#0b4f8a;
-}
+    const now = new Date();
 
-#countdown{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    margin:30px 0;
-}
+    // ===== COMPTE À REBOURS =====
 
-.count-box{
-    background:#fff;
-    padding:12px 18px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,.15);
-    min-width:80px;
-    text-align:center;
-}
+    const diff = departureDate - now;
+    const countdown = document.getElementById("countdown");
 
-.count-box span{
-    display:block;
-    font-size:28px;
-    font-weight:bold;
-    color:#d81b60;
-}
+    if (countdown) {
 
-.count-box small{
-    color:#555;
-}
+        if (diff > 0) {
 
-.voyage{
-    margin:40px 0;
-}
+            const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secondes = Math.floor((diff % (1000 * 60)) / 1000);
 
-.gare{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:15px;
-}
+            countdown.innerHTML = `
+                <div class="count-box">
+                    <span>${jours}</span>
+                    <small>Jours</small>
+                </div>
 
-.gare img{
-    width:180px;
-}
+                <div class="count-box">
+                    <span>${heures}</span>
+                    <small>Heures</small>
+                </div>
 
-.rails{
-    position:relative;
-    height:170px;
-    margin-top:20px;
-}
+                <div class="count-box">
+                    <span>${minutes}</span>
+                    <small>Minutes</small>
+                </div>
 
-.rails::before{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    top:78px;
-    height:18px;
-    background:url("images/rails.jpg") repeat-x center;
-    background-size:contain;
-}
+                <div class="count-box">
+                    <span>${secondes}</span>
+                    <small>Secondes</small>
+                </div>
+            `;
 
-#train{
-    position:absolute;
-    top:18px;
-    left:5%;
-    transition:left .8s ease;
-    z-index:10;
-}
+        } else {
 
-#train img{
-    width:170px;
-    transform:scaleX(-1);
-}
+            countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h2>";
 
-.destination{
-    position:absolute;
-    right:0;
-    top:-5px;
-    text-align:center;
-}
+        }
 
-.destination img{
-    width:170px;
-}
-
-.cadeau{
-    text-align:center;
-    margin:50px 0;
-}
-
-#surpriseBtn{
-    background:none;
-    border:none;
-    cursor:pointer;
-}
-
-#surpriseBtn img{
-    width:220px;
-    transition:.3s;
-}
-
-#surpriseBtn img:hover{
-    transform:scale(1.05);
-}
-
-#surprise{
-    display:none;
-    margin-top:25px;
-    animation:fade .6s;
-}
-
-@keyframes fade{
-
-    from{
-        opacity:0;
-        transform:translateY(20px);
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    // ===== TRAIN =====
+
+    const total = departureDate - startDate;
+    const elapsed = now - startDate;
+
+    let progress = elapsed / total;
+
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
+
+    const train = document.getElementById("train");
+
+    if (train) {
+
+        const position = 5 + (progress * 78);
+        train.style.left = position + "%";
+
     }
 
 }
 
-.mission{
-    margin-top:60px;
-    padding:20px;
-    background:#fff7f7;
-    border-left:6px solid crimson;
-    border-radius:15px;
-}
+// Première mise à jour
+updatePage();
 
-.bus{
-    width:45px;
-}
+// Mise à jour toutes les secondes
+setInterval(updatePage, 1000);
 
-@media(max-width:768px){
+// =====================
+// CADEAU
+// =====================
 
-    header h1{
-        font-size:32px;
-    }
+const surpriseBtn = document.getElementById("surpriseBtn");
+const surprise = document.getElementById("surprise");
 
-    .gare img{
-        width:130px;
-    }
+if (surpriseBtn && surprise) {
 
-    .destination img{
-        width:120px;
-    }
+    surprise.style.display = "none";
 
-    #train img{
-        width:120px;
-    }
+    surpriseBtn.addEventListener("click", function () {
 
-    #surpriseBtn img{
-        width:180px;
-    }
+        surpriseBtn.style.display = "none";
+        surprise.style.display = "block";
+
+        surprise.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    });
 
 }
