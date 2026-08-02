@@ -13,51 +13,45 @@ function updatePage() {
 
     const now = new Date();
 
-    // ===== COMPTE À REBOURS =====
-
     const diff = departureDate - now;
     const countdown = document.getElementById("countdown");
 
-    if (countdown) {
+    if (diff > 0) {
 
-        if (diff > 0) {
+        const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secondes = Math.floor((diff % (1000 * 60)) / 1000);
 
-            const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secondes = Math.floor((diff % (1000 * 60)) / 1000);
+        countdown.innerHTML = `
+            <div class="count-box">
+                <span>${jours}</span>
+                <small>Jours</small>
+            </div>
 
-            countdown.innerHTML = `
-                <div class="count-box">
-                    <span>${jours}</span>
-                    <small>Jours</small>
-                </div>
+            <div class="count-box">
+                <span>${heures}</span>
+                <small>Heures</small>
+            </div>
 
-                <div class="count-box">
-                    <span>${heures}</span>
-                    <small>Heures</small>
-                </div>
+            <div class="count-box">
+                <span>${minutes}</span>
+                <small>Minutes</small>
+            </div>
 
-                <div class="count-box">
-                    <span>${minutes}</span>
-                    <small>Minutes</small>
-                </div>
+            <div class="count-box">
+                <span>${secondes}</span>
+                <small>Secondes</small>
+            </div>
+        `;
 
-                <div class="count-box">
-                    <span>${secondes}</span>
-                    <small>Secondes</small>
-                </div>
-            `;
+    } else {
 
-        } else {
-
-            countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h2>";
-
-        }
+        countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h2>";
 
     }
 
-    // ===== TRAIN =====
+    // TRAIN
 
     const total = departureDate - startDate;
     const elapsed = now - startDate;
@@ -71,43 +65,37 @@ function updatePage() {
 
     if (train) {
 
-        const position = 5 + (progress * 78);
+        const position = 28 + (progress * 52);
+
         train.style.left = position + "%";
 
     }
 
 }
 
-// Lancement
 updatePage();
-setInterval(updatePage, 1000);
 
+setInterval(updatePage,1000);
 // =====================
-// SURPRISE
+// CADEAU → ENVELOPPE → MESSAGE
 // =====================
 
 const surpriseBtn = document.getElementById("surpriseBtn");
-const cadeau = surpriseBtn ? surpriseBtn.querySelector("img") : null;
-const enveloppe = document.getElementById("enveloppe");
 const surprise = document.getElementById("surprise");
+const enveloppe = document.getElementById("enveloppe");
+const messageSurprise = document.getElementById("messageSurprise");
 
-if (surpriseBtn && cadeau && enveloppe && surprise) {
+if (surpriseBtn && surprise && enveloppe && messageSurprise) {
 
-    enveloppe.style.display = "none";
+    // Au départ, tout est caché
     surprise.style.display = "none";
+    enveloppe.style.display = "none";
+    messageSurprise.style.display = "none";
 
     surpriseBtn.addEventListener("click", function () {
 
-        cadeau.style.display = "none";
-        enveloppe.style.display = "block";
+        // On cache le cadeau
+        surpriseBtn.style.display = "none";
 
-        setTimeout(function () {
-
-            enveloppe.style.display = "none";
-            surprise.style.display = "block";
-
-        }, 1500);
-
-    });
-
-}
+        // On affiche la zone surprise
+        surprise.style.display = "
