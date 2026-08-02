@@ -309,14 +309,14 @@ header p{
     .gare p,
 .destination p{
     position:relative;
-    top:-18px;
-    display:inline-block;
-    background:#fff;
-    padding:2px 6px;
-    border-radius:6px;
+    top:25px;
+    display:block;
+    background:transparent;
+    padding:0;
+    border-radius:0;
     font-size:15px;
     font-weight:bold;
-    z-index:50;
+    text-align:center;
 }
 
    .rails::before{
@@ -332,7 +332,7 @@ header p{
     z-index:15;
 }
     #train{
-    top:82px;
+    top:75px;
     left:5%;
 }
 
