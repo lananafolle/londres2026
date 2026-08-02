@@ -13,9 +13,7 @@ function updatePage() {
 
     const now = new Date();
 
-    // =====================
-    // COMPTE À REBOURS
-    // =====================
+    // ===== COMPTE À REBOURS =====
 
     const diff = departureDate - now;
     const countdown = document.getElementById("countdown");
@@ -53,63 +51,4 @@ function updatePage() {
 
         } else {
 
-            countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h2>";
-
-        }
-
-    }
-
-    // =====================
-    // TRAIN
-    // =====================
-
-    const total = departureDate - startDate;
-    const elapsed = now - startDate;
-
-    let progress = elapsed / total;
-
-    if (progress < 0) progress = 0;
-    if (progress > 1) progress = 1;
-
-    const train = document.getElementById("train");
-
-    if (train) {
-
-        // Départ juste après la gare
-        const position = 30 + (progress * 53);
-
-        train.style.left = position + "%";
-
-    }
-
-}
-
-// Première mise à jour
-updatePage();
-
-// Mise à jour chaque seconde
-setInterval(updatePage, 1000);
-
-// =====================
-// CADEAU
-// =====================
-
-const surpriseBtn = document.getElementById("surpriseBtn");
-const surprise = document.getElementById("surprise");
-
-if (surpriseBtn && surprise) {
-
-    surprise.style.display = "none";
-
-    surpriseBtn.addEventListener("click", function () {
-
-        surpriseBtn.style.display = "none";
-        surprise.style.display = "block";
-
-        surprise.scrollIntoView({
-            behavior: "smooth"
-        });
-
-    });
-
-}
+            countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h
