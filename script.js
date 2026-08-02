@@ -6,16 +6,12 @@ const departureDate = new Date("2026-11-25T07:35:00");
 const startDate = new Date("2026-07-29T00:00:00");
 
 // =====================
-// MISE À JOUR
+// COMPTE À REBOURS + TRAIN
 // =====================
 
 function updatePage() {
 
     const now = new Date();
-
-    // =====================
-    // COMPTE À REBOURS
-    // =====================
 
     const diff = departureDate - now;
     const countdown = document.getElementById("countdown");
@@ -59,9 +55,7 @@ function updatePage() {
 
     }
 
-    // =====================
-    // TRAIN
-    // =====================
+    // Train
 
     const total = departureDate - startDate;
     const elapsed = now - startDate;
@@ -83,8 +77,8 @@ function updatePage() {
 
 }
 
-// Lancement
 updatePage();
+
 setInterval(updatePage, 1000);
 
 // =====================
@@ -98,26 +92,22 @@ const messageSurprise = document.getElementById("messageSurprise");
 
 if (surpriseBtn && surprise && enveloppe && messageSurprise) {
 
-    // Tout est caché au départ
     surprise.style.display = "none";
     enveloppe.style.display = "none";
     messageSurprise.style.display = "none";
 
     surpriseBtn.addEventListener("click", function () {
 
-        // Cache le cadeau
         surpriseBtn.style.display = "none";
 
-        // Affiche la zone surprise
         surprise.style.display = "block";
 
-        // Affiche l'enveloppe
         enveloppe.style.display = "block";
 
-        // Puis affiche le message
         setTimeout(function () {
 
             enveloppe.style.display = "none";
+
             messageSurprise.style.display = "block";
 
         }, 1500);
