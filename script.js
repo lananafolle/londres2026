@@ -69,7 +69,7 @@ function updatePage() {
 
     if (train) {
 
-       const position = -3 + (progress * 84);
+       const position = 2 + (progress * 80);
 
         train.style.left = position + "%";
 
