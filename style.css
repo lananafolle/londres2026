@@ -376,7 +376,12 @@ header p{
 }
 
     .bus{
-    width:150px !important;
+    width:150px;
+    height:auto;
+    flex-shrink:0;
+}
+   .mission h2 img{
+    width:150px;
     height:auto;
 }
 /* ==========================
