@@ -340,7 +340,7 @@ background-repeat:repeat-x;
 }
 
 .rails::before{
-    top:115px;
+    top:100px;
 }
 
 .gare{
@@ -359,11 +359,11 @@ background-repeat:repeat-x;
 
 .gare p,
 .destination p{
-    margin-top:-12px;
-    background:#fff;
-    padding:2px 8px;
-    border-radius:8px;
-    display:inline-block;
+    margin-top:45px;
+    background:transparent;
+    padding:0;
+    font-size:15px;
+    font-weight:bold;
     position:relative;
     z-index:30;
 }
