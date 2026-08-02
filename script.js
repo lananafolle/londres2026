@@ -28,12 +28,31 @@ function updatePage() {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const secondes = Math.floor((diff % (1000 * 60)) / 1000);
 
-        countdown.innerHTML =
-            `${jours} jours • ${heures} h • ${minutes} min • ${secondes} s`;
+        countdown.innerHTML = `
+            <div class="count-box">
+                <span>${jours}</span>
+                <small>Jours</small>
+            </div>
+
+            <div class="count-box">
+                <span>${heures}</span>
+                <small>Heures</small>
+            </div>
+
+            <div class="count-box">
+                <span>${minutes}</span>
+                <small>Minutes</small>
+            </div>
+
+            <div class="count-box">
+                <span>${secondes}</span>
+                <small>Secondes</small>
+            </div>
+        `;
 
     } else {
 
-        countdown.innerHTML = "🚄 C'est le départ !";
+        countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h2>";
 
     }
 
@@ -51,7 +70,10 @@ function updatePage() {
 
     if (train) {
 
-        train.style.left = (progress * 78) + "%";
+        // Départ à 5 % et arrivée à 83 %
+        const position = 5 + (progress * 78);
+
+        train.style.left = position + "%";
 
     }
 
