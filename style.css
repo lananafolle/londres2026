@@ -30,57 +30,57 @@ header h1{
     color:#0b4f8a;
 }
 
-header h2{
-    margin-top:15px;
-    font-size:36px;
-}
-
-header p{
-    color:#666;
-    font-size:22px;
-    margin-top:10px;
-}
-
-/* Compte à rebours */
-
 #countdown{
     display:flex;
     justify-content:center;
     gap:15px;
     flex-wrap:wrap;
-    margin:35px 0;
+    margin:30px 0;
 }
 
 .count-box{
     background:#fff;
-    padding:15px 20px;
-    border-radius:18px;
-    box-shadow:0 6px 18px rgba(0,0,0,.15);
-    min-width:100px;
+    padding:12px 18px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    min-width:80px;
     text-align:center;
 }
 
 .count-box span{
     display:block;
-    font-size:30px;
+    font-size:28px;
     font-weight:bold;
     color:#d81b60;
 }
 
 .count-box small{
-    font-size:18px;
     color:#555;
 }
 
-/* Voyage */
-
 .voyage{
-    margin-top:40px;
+    margin:40px 0;
+}
+
+.gare{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.gare img{
+    width:220px;
+}
+
+.gare p{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:10px;
 }
 
 .rails{
     position:relative;
-    height:260px;
+    height:170px;
+    margin-top:20px;
 }
 
 .rails::before{
@@ -88,49 +88,122 @@ header p{
     position:absolute;
     left:0;
     right:0;
-    top:150px;
+    top:80px;
     height:18px;
     background:url("images/rails.jpg") repeat-x center;
     background-size:contain;
 }
 
-/* Gare */
-
-.gare{
-    position:absolute;
-    left:0;
-    top:20px;
-    width:180px;
-    text-align:center;
-}
-
-.gare img{
-    width:170px;
-}
-
-.gare p{
-    margin-top:8px;
-    font-size:20px;
-    font-weight:bold;
-}
-
-/* Train */
-
 #train{
     position:absolute;
-    top:90px;
-    left:5%;
-    z-index:10;
+    top:18px;
+    left:35%;
     transition:left .8s ease;
+    z-index:10;
 }
 
 #train img{
     width:170px;
+    transform:scaleX(-1);
 }
-
-/* Londres */
 
 .destination{
     position:absolute;
     right:0;
-    top:20px;
+    top:-5px;
+    text-align:center;
+}
+
+.destination img{
+    width:170px;
+}
+
+.destination p{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.cadeau{
+    text-align:center;
+    margin:60px 0;
+}
+
+#surpriseBtn{
+    background:none;
+    border:none;
+    cursor:pointer;
+}
+
+#surpriseBtn img{
+    width:220px;
+    transition:.3s;
+}
+
+#surpriseBtn img:hover{
+    transform:scale(1.05);
+}
+
+#surprise{
+    display:none;
+    margin-top:25px;
+    animation:fade .6s;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.mission{
+    margin-top:60px;
+    padding:20px;
+    background:#fff7f7;
+    border-left:6px solid crimson;
+    border-radius:15px;
+}
+
+.bus{
+    width:45px;
+}
+
+@media(max-width:768px){
+
+    header h1{
+        font-size:32px;
+    }
+
+    .gare img{
+        width:180px;
+    }
+
+    .gare p{
+        font-size:18px;
+    }
+
+    .destination img{
+        width:140px;
+    }
+
+    .destination p{
+        font-size:18px;
+    }
+
+    #train img{
+        width:140px;
+    }
+
+    #surpriseBtn img{
+        width:180px;
+    }
+
+}
