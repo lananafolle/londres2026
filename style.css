@@ -1,114 +1,261 @@
-// =====================
-// DATES
-// =====================
+/* ==========================
+   GÉNÉRAL
+========================== */
 
-const departureDate = new Date("2026-11-25T07:35:00");
-const startDate = new Date("2026-07-29T00:00:00");
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-// =====================
-// COMPTE À REBOURS + TRAIN
-// =====================
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(#8fd3ff,#eaf8ff);
+    color:#222;
+}
 
-function updatePage() {
+.container{
+    width:95%;
+    max-width:900px;
+    margin:30px auto;
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,.20);
+}
 
-    const now = new Date();
+header{
+    text-align:center;
+    margin-bottom:30px;
+}
 
-    // Compte à rebours
-    const diff = departureDate - now;
-    const countdown = document.getElementById("countdown");
+header h1{
+    font-size:42px;
+    color:#0b4f8a;
+}
 
-    if (countdown) {
+header h2{
+    font-size:30px;
+    margin:10px 0;
+}
 
-        if (diff > 0) {
+header p{
+    color:#666;
+}
 
-            const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secondes = Math.floor((diff % (1000 * 60)) / 1000);
+/* ==========================
+   COMPTE À REBOURS
+========================== */
 
-            countdown.innerHTML = `
-                <div class="count-box">
-                    <span>${jours}</span>
-                    <small>Jours</small>
-                </div>
+#countdown{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
 
-                <div class="count-box">
-                    <span>${heures}</span>
-                    <small>Heures</small>
-                </div>
+.count-box{
+    min-width:90px;
+    padding:15px;
+    background:#fff;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
 
-                <div class="count-box">
-                    <span>${minutes}</span>
-                    <small>Minutes</small>
-                </div>
+.count-box span{
+    display:block;
+    font-size:
+        /* ==========================
+   CADEAU
+========================== */
 
-                <div class="count-box">
-                    <span>${secondes}</span>
-                    <small>Secondes</small>
-                </div>
-            `;
+.cadeau{
+    text-align:center;
+    margin:60px 0;
+}
 
-        } else {
+#surpriseBtn{
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+}
 
-            countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h2>";
+#surpriseBtn img{
+    width:220px;
+    max-width:100%;
+    transition:transform .3s;
+}
 
-        }
+#surpriseBtn:hover img{
+    transform:scale(1.05);
+}
 
+#surprise{
+    display:none;
+    text-align:center;
+    margin-top:30px;
+    animation:fade .6s ease;
+}
+
+#enveloppe{
+    display:none;
+    width:220px;
+    max-width:100%;
+    margin:0 auto 20px;
+}
+
+#messageSurprise{
+    display:none;
+}
+
+#surprise h2{
+    font-size:36px;
+    color:#0b4f8a;
+    margin-bottom:15px;
+}
+
+#surprise p{
+    font-size:22px;
+    line-height:1.6;
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
     }
 
-    // Train
-    const total = departureDate - startDate;
-    const elapsed = now - startDate;
-
-    let progress = elapsed / total;
-
-    if (progress < 0) progress = 0;
-    if (progress > 1) progress = 1;
-
-    const train = document.getElementById("train");
-
-    if (train) {
-
-        const position = 0 + (progress * 82);
-
-        train.style.left = position + "%";
-
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 
 }
+    /* ==========================
+   MISSION
+========================== */
 
-updatePage();
-setInterval(updatePage, 1000);
+.mission{
+    margin-top:60px;
+    padding:25px;
+    background:#fff7f7;
+    border-left:6px solid crimson;
+    border-radius:15px;
+}
 
-// =====================
-// SURPRISE
-// =====================
+.mission h2{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+    font-size:30px;
+}
 
-const surpriseBtn = document.getElementById("surpriseBtn");
-const surprise = document.getElementById("surprise");
-const enveloppe = document.getElementById("enveloppe");
-const messageSurprise = document.getElementById("messageSurprise");
+.bus{
+    width:45px;
+}
 
-if (surpriseBtn && surprise && enveloppe && messageSurprise) {
+.mission p{
+    text-align:center;
+    font-size:20px;
+    line-height:1.6;
+}
 
-    surprise.style.display = "none";
-    enveloppe.style.display = "none";
-    messageSurprise.style.display = "none";
+/* ==========================
+   VERSION MOBILE
+========================== */
 
-    surpriseBtn.addEventListener("click", function () {
+@media (max-width:768px){
 
-        surpriseBtn.style.display = "none";
+    .container{
+        width:95%;
+        padding:20px;
+    }
 
-        surprise.style.display = "block";
-        enveloppe.style.display = "block";
+    header h1{
+        font-size:30px;
+    }
 
-        setTimeout(function () {
+    header h2{
+        font-size:22px;
+    }
 
-            enveloppe.style.display = "none";
-            messageSurprise.style.display = "block";
+    header p{
+        font-size:16px;
+    }
 
-        }, 1500);
+    .count-box{
+        min-width:70px;
+        padding:10px;
+    }
 
-    });
+    .count-box span{
+        font-size:24px;
+    }
+
+    .count-box small{
+        font-size:12px;
+    }
+
+    .rails{
+        height:180px;
+    }
+
+    .rails::before{
+        top:90px;
+    }
+
+    .gare,
+    .destination{
+        width:120px;
+    }
+
+    .gare img,
+    .destination img{
+        width:120px;
+    }
+
+    .gare p,
+    .destination p{
+        font-size:14px;
+    }
+
+    #train{
+        top:45px;
+    }
+
+    #train img{
+        width:120px;
+    }
+
+    #surpriseBtn img,
+    #enveloppe{
+        width:170px;
+    }
+
+    #surprise h2{
+        font-size:28px;
+    }
+
+    #surprise p{
+        font-size:18px;
+    }
+
+    .mission h2{
+        font-size:22px;
+    }
+
+    .mission p{
+        font-size:16px;
+    }
+
+    .bus{
+        width:35px;
+    }
 
 }
