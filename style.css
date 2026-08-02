@@ -333,7 +333,38 @@ background-repeat:repeat-x;
 
     .mission p{
         font-size:16px;
-    }
+       /* Ajustement du voyage sur téléphone */
+
+.rails{
+    height:200px;
+}
+
+.rails::before{
+    top:115px;
+}
+
+.gare{
+    left:0;
+    top:10px;
+}
+
+.destination{
+    right:0;
+    top:10px;
+}
+
+#train{
+    top:68px;
+}
+
+.gare p,
+.destination p{
+    background:#fff;
+    padding:2px 8px;
+    border-radius:8px;
+    position:relative;
+    z-index:20;
+}
 
     .bus{
         width:35px;
