@@ -51,4 +51,63 @@ function updatePage() {
 
         } else {
 
-            countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h
+            countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h2>";
+
+        }
+
+    }
+
+    // ===== TRAIN =====
+
+    const total = departureDate - startDate;
+    const elapsed = now - startDate;
+
+    let progress = elapsed / total;
+
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
+
+    const train = document.getElementById("train");
+
+    if (train) {
+
+        const position = 5 + (progress * 78);
+        train.style.left = position + "%";
+
+    }
+
+}
+
+// Lancement
+updatePage();
+setInterval(updatePage, 1000);
+
+// =====================
+// SURPRISE
+// =====================
+
+const surpriseBtn = document.getElementById("surpriseBtn");
+const cadeau = surpriseBtn ? surpriseBtn.querySelector("img") : null;
+const enveloppe = document.getElementById("enveloppe");
+const surprise = document.getElementById("surprise");
+
+if (surpriseBtn && cadeau && enveloppe && surprise) {
+
+    enveloppe.style.display = "none";
+    surprise.style.display = "none";
+
+    surpriseBtn.addEventListener("click", function () {
+
+        cadeau.style.display = "none";
+        enveloppe.style.display = "block";
+
+        setTimeout(function () {
+
+            enveloppe.style.display = "none";
+            surprise.style.display = "block";
+
+        }, 1500);
+
+    });
+
+}
