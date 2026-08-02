@@ -1,126 +1,248 @@
-// =====================
-// DATES
-// =====================
+/* ==========================
+   GÉNÉRAL
+========================== */
 
-const departureDate = new Date("2026-11-25T07:35:00");
-const startDate = new Date("2026-07-29T00:00:00");
-
-// =====================
-// MISE À JOUR
-// =====================
-
-function updatePage() {
-
-    const now = new Date();
-
-    // ===== COMPTE À REBOURS =====
-
-    const diff = departureDate - now;
-    const countdown = document.getElementById("countdown");
-
-    if (countdown) {
-
-        if (diff > 0) {
-
-            const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secondes = Math.floor((diff % (1000 * 60)) / 1000);
-
-            countdown.innerHTML = `
-                <div class="count-box">
-                    <span>${jours}</span>
-                    <small>Jours</small>
-                </div>
-
-                <div class="count-box">
-                    <span>${heures}</span>
-                    <small>Heures</small>
-                </div>
-
-                <div class="count-box">
-                    <span>${minutes}</span>
-                    <small>Minutes</small>
-                </div>
-
-                <div class="count-box">
-                    <span>${secondes}</span>
-                    <small>Secondes</small>
-                </div>
-            `;
-
-        } else {
-
-            countdown.innerHTML = "<h2>🚄 C'est le grand départ ! 🇬🇧</h2>";
-
-        }
-
-    }
-
-    // ===== TRAIN =====
-
-    const total = departureDate - startDate;
-    const elapsed = now - startDate;
-
-    let progress = elapsed / total;
-
-    if (progress < 0) progress = 0;
-    if (progress > 1) progress = 1;
-
-    const train = document.getElementById("train");
-
-    if (train) {
-
-        const position = 5 + (progress * 78);
-
-        train.style.left = position + "%";
-
-    }
-
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-updatePage();
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(#8fd3ff,#eaf8ff);
+    color:#222;
+}
 
-setInterval(updatePage, 1000);
-// =====================
-// CADEAU → ENVELOPPE → MESSAGE
-// =====================
+.container{
+    width:95%;
+    max-width:900px;
+    margin:30px auto;
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,.20);
+}
 
-const surpriseBtn = document.getElementById("surpriseBtn");
-const surprise = document.getElementById("surprise");
-const enveloppe = document.getElementById("enveloppe");
-const messageSurprise = document.getElementById("messageSurprise");
+header{
+    text-align:center;
+    margin-bottom:30px;
+}
 
-if (surpriseBtn && surprise && enveloppe && messageSurprise) {
+header h1{
+    font-size:42px;
+    color:#0b4f8a;
+}
 
-    // Au départ
-    surprise.style.display = "none";
-    enveloppe.style.display = "none";
-    messageSurprise.style.display = "none";
+header h2{
+    font-size:30px;
+    margin:10px 0;
+}
 
-    surpriseBtn.addEventListener("click", function () {
+header p{
+    color:#666;
+}
 
-        // Cache le cadeau
-        surpriseBtn.style.display = "none";
+/* ==========================
+   COMPTE À REBOURS
+========================== */
 
-        // Affiche la zone surprise
-        surprise.style.display = "block";
+#countdown{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
 
-        // Affiche l'enveloppe
-        enveloppe.style.display = "block";
+.count-box{
+    min-width:90px;
+    padding:15px;
+    background:#fff;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
 
-        // Après 1,5 seconde
-        setTimeout(function () {
+.count-box span{
+    display:block;
+    font-size:30px;
+    font-weight:bold;
+    color:#d81b60;
+}
 
-            enveloppe.style.display = "none";
-            messageSurprise.style.display = "block";
+.count-box small{
+    color:#666;
+}
 
-        }, 1500);
+/* ==========================
+   VOYAGE
+========================== */
 
-        surprise.scrollIntoView({
-            behavior: "smooth"
-        });
+.voyage{
+    margin:50px 0;
+}
 
-    });
+.rails{
+    position:relative;
+    width:100%;
+    height:220px;
+}
+
+.rails::before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:110px;
+    height:18px;
+    background:url("images/rails.jpg") repeat-x center;
+    background-size:contain;
+}
+
+.gare{
+    position:absolute;
+    left:0;
+    top:0;
+    width:170px;
+    text-align:center;
+}
+
+.gare img{
+    width:170px;
+}
+
+.gare p{
+    margin-top:8px;
+    font-weight:bold;
+}
+
+#train{
+    position:absolute;
+    top:40px;
+    left:5%;
+    z-index:10;
+    transition:left .8s ease;
+}
+
+#train img{
+    width:170px;
+}
+
+.destination{
+    position:absolute;
+    right:0;
+    top:0;
+    width:170px;
+    text-align:center;
+}
+
+.destination img{
+    width:170px;
+}
+
+.destination p{
+    margin-top:8px;
+    font-weight:bold;
+}
+/* ==========================
+   VERSION MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .container{
+        padding:20px;
+    }
+
+    header h1{
+        font-size:30px;
+    }
+
+    header h2{
+        font-size:22px;
+    }
+
+    header p{
+        font-size:16px;
+    }
+
+    .count-box{
+        min-width:70px;
+        padding:10px;
+    }
+
+    .count-box span{
+        font-size:24px;
+    }
+
+    .count-box small{
+        font-size:12px;
+    }
+
+    .rails{
+        height:180px;
+    }
+
+    .rails::before{
+        top:90px;
+    }
+
+    .gare{
+        width:120px;
+    }
+
+    .gare img{
+        width:120px;
+    }
+
+    .gare p{
+        font-size:14px;
+    }
+
+    #train{
+        top:35px;
+    }
+
+    #train img{
+        width:120px;
+    }
+
+    .destination{
+        width:120px;
+    }
+
+    .destination img{
+        width:120px;
+    }
+
+    .destination p{
+        font-size:14px;
+    }
+
+    #surpriseBtn img,
+    #enveloppe{
+        width:170px;
+    }
+
+    #surprise h2{
+        font-size:28px;
+    }
+
+    #surprise p{
+        font-size:18px;
+    }
+
+    .mission h2{
+        font-size:22px;
+    }
+
+    .mission p{
+        font-size:16px;
+    }
+
+    .bus{
+        width:35px;
+    }
 
 }
