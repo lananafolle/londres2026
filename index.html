@@ -1,118 +1,111 @@
-// =====================
-// DATES
-// =====================
+<!DOCTYPE html>
+<html lang="fr">
 
-const departureDate = new Date("2026-11-25T07:35:00");
-const startDate = new Date("2026-07-29T00:00:00");
+<head>
 
-// =====================
-// MISE À JOUR
-// =====================
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-function updatePage() {
+<title>Mission Londres 2026</title>
 
-    const now = new Date();
+<link rel="stylesheet" href="style.css">
 
-    // =====================
-    // COMPTE À REBOURS
-    // =====================
+</head>
 
-    const diff = departureDate - now;
-    const countdown = document.getElementById("countdown");
+<body>
 
-    if (countdown) {
+<div class="container">
 
-        if (diff > 0) {
+<header>
 
-            const jours = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const heures = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secondes = Math.floor((diff % (1000 * 60)) / 1000);
+<h1>🇬🇧 Mission Londres 🇬🇧</h1>
 
-            countdown.innerHTML = `
-                <div class="count-box">
-                    <span>${jours}</span>
-                    <small>Jours</small>
-                </div>
+<h2>25 au 28 novembre 2026</h2>
 
-                <div class="count-box">
-                    <span>${heures}</span>
-                    <small>Heures</small>
-                </div>
+<p>Départ en Eurostar depuis Lille Europe</p>
 
-                <div class="count-box">
-                    <span>${minutes}</span>
-                    <small>Minutes</small>
-                </div>
+</header>
 
-                <div class="count-box">
-                    <span>${secondes}</span>
-                    <small>Secondes</small>
-                </div>
-            `;
+<div id="countdown"></div>
 
-        } else {
+<section class="voyage">
 
-            countdown.innerHTML = `
-                <h2>🚄 C'est le grand départ ! 🇬🇧</h2>
-            `;
+<div class="gare">
 
-        }
+<img src="images/gare.jpg" alt="Gare Lille Europe">
 
-    }
+<p><strong>Lille Europe</strong></p>
 
-    // =====================
-    // TRAIN
-    // =====================
+</div>
 
-    const total = departureDate - startDate;
-    const elapsed = now - startDate;
+<div class="rails">
 
-    let progress = elapsed / total;
+<div id="train">
 
-    if (progress < 0) progress = 0;
-    if (progress > 1) progress = 1;
+<img src="images/train.png" alt="Eurostar">
 
-    const train = document.getElementById("train");
+</div>
 
-    if (train) {
+<div class="destination">
 
-        // Le train part à 5 % et arrive à 83 %
-        const position = 5 + (progress * 78);
+<img src="images/bigben.png" alt="Big Ben">
 
-        train.style.left = position + "%";
+<p><strong>Londres</strong></p>
 
-    }
+</div>
 
-}
+</div>
 
-// Première mise à jour
-updatePage();
+</section>
 
-// Mise à jour chaque seconde
-setInterval(updatePage, 1000);
+<section class="cadeau">
 
-// =====================
-// CADEAU
-// =====================
+<button id="surpriseBtn">
 
-const surpriseBtn = document.getElementById("surpriseBtn");
-const surprise = document.getElementById("surprise");
+<img src="images/cadeau.png" alt="Cadeau">
 
-if (surpriseBtn && surprise) {
+</button>
 
-    // Cache la surprise au chargement
-    surprise.style.display = "none";
+<div id="surprise">
+  <h2>🎉 Surprise !</h2>
 
-    surpriseBtn.addEventListener("click", function () {
+<p>
+Andy, tu pars à Londres avec nous !
+</p>
 
-        surpriseBtn.style.display = "none";
-        surprise.style.display = "block";
+<p>
 
-        surprise.scrollIntoView({
-            behavior: "smooth"
-        });
+🚄 Eurostar<br>
+📅 25 → 28 novembre 2026
 
-    });
+</p>
 
-}
+</div>
+
+</section>
+
+<section class="mission">
+
+<h2>
+
+<img src="images/bus.png" class="bus">
+
+Mission Bus Rouge
+
+</h2>
+
+<p>
+
+Pendant le séjour, trouve un bus rouge à impériale et prends une photo devant !
+
+</p>
+
+</section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>  
