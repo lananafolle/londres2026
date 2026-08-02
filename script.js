@@ -86,6 +86,7 @@ setInterval(updatePage, 1000);
 
 const surpriseBtn = document.getElementById("surpriseBtn");
 const surprise = document.getElementById("surprise");
+const magic = document.getElementById("magic");
 const enveloppe = document.getElementById("enveloppe");
 const messageSurprise = document.getElementById("messageSurprise");
 
@@ -106,6 +107,9 @@ if (surpriseBtn && surprise && enveloppe && messageSurprise) {
 
             enveloppe.style.display = "none";
             messageSurprise.style.display = "block";
+            if (magic) {
+    magic.play();
+}
 
         }, 1500);
 
