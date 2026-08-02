@@ -72,8 +72,10 @@ function updatePage() {
        const position = 2 + (progress * 80);
 
         train.style.left = position + "%";
+        
         const smoke = document.getElementById("smoke");
 if (smoke) smoke.style.left = (position - 2) + "%";
+        
 train.style.transform = "translateY(" + (Math.sin(Date.now() / 150) * 3) + "px)";
         // Rotation légère pour donner l'impression qu'il roule
 train.style.rotate = (Math.sin(Date.now() / 250) * 1.5) + "deg";
